@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Risks of AI</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+    color:white;
+    background-image:url("https://www.raullara.net/wp-content/uploads/2023/02/AdobeStock_566247501-1024x683.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+header{
+    background-image:url("https://www.raullara.net/wp-content/uploads/2023/02/AdobeStock_566247501-1024x683.jpeg");
+    background-size:cover;
+    background-position:center;
+    padding:60px 20px;
+    text-align:center;
+}
+
+.header-box{
+    background-color:rgba(0,0,0,0.85);
+    padding:35px 40px;
+    border-radius:15px;
+    width:fit-content;
+    margin:auto;
+}
+
+section{
+    padding:25px;
+}
+
+.section-title{
+    background-color:rgba(0,0,0,0.85);
+    color:white;
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:1.6rem;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.box{
+    background-color:rgba(220,20,60,0.9);
+    padding:15px;
+    border-radius:8px;
+}
+
+.chart-container{
+    width:80%;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.insight-box{
+    margin-top:15px;
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:8px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    display:none;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+form{
+    margin-top:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+}
+
+img{
+    margin-top:20px;
+    border-radius:10px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@media(max-width:768px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+</head>
+
+<body onload="welcome()">
+
+<header>
+
+<div class="header-box">
+
+<h1>Risks and Challenges of Artificial Intelligence</h1>
+<p>Understanding the ethical, economic, and technological risks of AI.</p>
+
+<button onclick="showRisk()">AI Risk Insight</button>
+
+<div id="riskBox" class="insight-box"></div>
+
+</div>
+
+</header>
+
+<section>
+
+<h2 class="section-title">Why AI Risks Matter</h2>
+
+<p>
+While artificial intelligence provides significant benefits, it also introduces complex social and economic challenges. Automation may replace certain job roles, requiring large-scale workforce reskilling and education reform. Governments and organizations are actively studying how to balance technological innovation with economic stability.
+</p>
+
+<p>
+AI systems also depend on large datasets that may include sensitive personal information. This creates concerns around privacy, data security, and surveillance. As AI becomes more powerful, ensuring transparency, fairness, and accountability in automated decisions becomes increasingly important.
+</p>
+
+</section>
+
+<section>
+
+<h2 class="section-title">Major Risks of AI</h2>
+
+<div class="grid">
+
+<div class="box">
+<h4>Job Displacement</h4>
+<p>
+Automation may reduce demand for repetitive roles in manufacturing, logistics, and administrative sectors, requiring workers to adapt to new technology-driven careers.
+</p>
+</div>
+
+<div class="box">
+<h4>Privacy Concerns</h4>
+<p>
+AI systems rely heavily on large datasets, which may include personal data. Without proper regulation, surveillance technologies and data misuse may threaten privacy rights.
+</p>
+</div>
+
+<div class="box">
+<h4>Hardware and Energy Demand</h4>
+<p>
+Training advanced AI models requires powerful GPUs and massive data centers. These infrastructures consume large amounts of electricity and increase environmental impact.
+</p>
+</div>
+
+<div class="box">
+<h4>Algorithmic Bias</h4>
+<p>
+AI systems trained on biased or incomplete datasets may produce unfair or discriminatory outcomes in areas such as hiring, lending, or criminal justice decisions.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">AI Risk Impact Chart ⚠️</h2>
+
+<div class="chart-container">
+<canvas id="riskChart"></canvas>
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">Share Your Opinion</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Your thoughts about AI"></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<img src="https://www.unite.ai/wp-content/uploads/2023/06/AI-Risks.jpg" width="800">
+
+</section>
+
+<script>
+
+function welcome(){
+alert("Welcome to the AI Risks page ⚠️");
+}
+
+function showRisk(){
+
+const risks=[
+
+"Automation powered by artificial intelligence can significantly impact the global workforce. While AI increases productivity, it may replace repetitive jobs in sectors such as manufacturing, logistics, and customer service, requiring workers to develop new digital skills.",
+
+"AI systems rely heavily on large datasets, which may contain personal and sensitive information. Without strict regulations and security safeguards, these systems may create serious privacy and surveillance concerns.",
+
+"Large-scale AI models require enormous computational power and energy. Data centers that train and operate these models consume vast electricity resources, raising environmental sustainability concerns.",
+
+"Algorithmic bias occurs when AI systems learn from incomplete or biased data. If not properly managed, this bias can lead to unfair outcomes in areas such as hiring decisions, credit scoring, and law enforcement systems."
+
+];
+
+let randomRisk=risks[Math.floor(Math.random()*risks.length)];
+
+let box=document.getElementById("riskBox");
+
+box.style.display="block";
+
+box.innerHTML=randomRisk;
+
+}
+
+const ctx=document.getElementById('riskChart');
+
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+labels:['Job Loss','Privacy Risk','Energy Use','Algorithm Bias'],
+
+datasets:[{
+label:'Risk Severity (%)',
+data:[80,85,70,75],
+borderWidth:2
+}]
+},
+
+options:{
+responsive:true,
+animation:{duration:2000},
+scales:{
+y:{beginAtZero:true,max:100}
+}
+}
+
+});
+
+</script>
+
+</body>
+</html>
